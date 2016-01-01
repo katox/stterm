@@ -1,0 +1,75 @@
+From 08fcc954371db802bff13615bae8f756948b89ed Mon Sep 17 00:00:00 2001
+From: Kamil Toman <kamil.toman@leafclick.com>
+Date: Fri, 1 Jan 2016 23:22:33 +0100
+Subject: [PATCH 2/8] Mouse scrollback (button 4 / button 5)
+
+---
+ config.def.h | 10 ++++++++--
+ st.c         | 16 ++++++++++++++++
+ 2 files changed, 24 insertions(+), 2 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 03597cf..cac66ac 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -136,8 +136,14 @@ static unsigned int defaultunderline = 7;
+  */
+ static MouseShortcut mshortcuts[] = {
+ 	/* button               mask            string */
+-	{ Button4,              XK_ANY_MOD,     "\031" },
+-	{ Button5,              XK_ANY_MOD,     "\005" },
++	{ Button4,              ShiftMask,      "\031" },
++	{ Button5,              ShiftMask,      "\005" },
++};
++
++static MouseKey mkeys[] = {
++	/* button               mask            function        argument */
++	{ Button4,              XK_NO_MOD,      kscrollup,      {.i =  5} },
++	{ Button5,              XK_NO_MOD,      kscrolldown,    {.i =  5} },
+ };
+ 
+ /* Internal keyboard shortcuts. */
+diff --git a/st.c b/st.c
+index 2547c65..f5fb3e1 100644
+--- a/st.c
++++ b/st.c
+@@ -317,6 +317,13 @@ typedef union {
+ } Arg;
+ 
+ typedef struct {
++	uint b;
++	uint mask;
++	void (*func)(const Arg *);
++	const Arg arg;
++} MouseKey;
++
++typedef struct {
+ 	uint mod;
+ 	KeySym keysym;
+ 	void (*func)(const Arg *);
+@@ -945,6 +952,7 @@ bpress(XEvent *e)
+ {
+ 	struct timespec now;
+ 	MouseShortcut *ms;
++	MouseKey *mk;
+ 
+ 	if (IS_SET(MODE_MOUSE) && !(e->xbutton.state & forceselmod)) {
+ 		mousereport(e);
+@@ -959,6 +967,14 @@ bpress(XEvent *e)
+ 		}
+ 	}
+ 
++	for (mk = mkeys; mk < mkeys + LEN(mkeys); mk++) {
++		if (e->xbutton.button == mk->b
++				&& match(mk->mask, e->xbutton.state)) {
++			mk->func(&mk->arg);
++			return;
++		}
++	}
++
+ 	if (e->xbutton.button == Button1) {
+ 		clock_gettime(CLOCK_MONOTONIC, &now);
+ 
+-- 
+2.5.0
+

@@ -1,0 +1,45 @@
+From 3c0383c0d5a3c44063e76d97a451c246d41c370a Mon Sep 17 00:00:00 2001
+From: Kamil Toman <kamil.toman@leafclick.com>
+Date: Fri, 1 Jan 2016 23:41:22 +0100
+Subject: [PATCH 7/8] Change Alt-Shift-c/v to more used Ctrl-Shift-c/v
+
+---
+ config.def.h | 4 ++--
+ st.1         | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 8778e5c..f249861 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -164,8 +164,8 @@ static Shortcut shortcuts[] = {
+ 	{ MODKEY|ShiftMask,     XK_Home,        xzoomreset,     {.f =  0} },
+ 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
+ 	{ MODKEY|ShiftMask,     XK_Insert,      clippaste,      {.i =  0} },
+-	{ MODKEY|ShiftMask,     XK_C,           clipcopy,       {.i =  0} },
+-	{ MODKEY|ShiftMask,     XK_V,           clippaste,      {.i =  0} },
++	{ ControlMask|ShiftMask,XK_C,           clipcopy,       {.i =  0} },
++	{ ControlMask|ShiftMask,XK_V,           clippaste,      {.i =  0} },
+ 	{ MODKEY,               XK_Num_Lock,    numlock,        {.i =  0} },
+ 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+ 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+diff --git a/st.1 b/st.1
+index 6229305..3125c2e 100644
+--- a/st.1
++++ b/st.1
+@@ -154,10 +154,10 @@ Paste from primary selection (middle mouse button).
+ .B Alt-Shift-Insert
+ Paste from clipboard selection.
+ .TP
+-.B Alt-Shift-c
++.B Ctrl-Shift-c
+ Copy the selected text to the clipboard selection.
+ .TP
+-.B Alt-Shift-v
++.B Ctrl-Shift-v
+ Paste from the clipboard selection.
+ .SH CUSTOMIZATION
+ .B st
+-- 
+2.5.0
+

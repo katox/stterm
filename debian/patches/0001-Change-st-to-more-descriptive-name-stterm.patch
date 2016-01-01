@@ -1,0 +1,231 @@
+From 166380a3f438420397c7b60e085a2be33d135a2d Mon Sep 17 00:00:00 2001
+From: Kamil Toman <kamil.toman@leafclick.com>
+Date: Fri, 1 Jan 2016 22:59:55 +0100
+Subject: [PATCH 1/8] Change st to more descriptive name stterm
+
+---
+ config.def.h |  2 +-
+ st.1         | 28 ++++++++++++++--------------
+ st.c         | 20 ++++++++++----------
+ st.info      | 14 +++++++-------
+ 4 files changed, 32 insertions(+), 32 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index fd09d72..03597cf 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -63,7 +63,7 @@ static unsigned int cursorthickness = 2;
+ static int bellvolume = 0;
+ 
+ /* default TERM value */
+-static char termname[] = "st-256color";
++static char termname[] = "stterm-256color";
+ 
+ static unsigned int tabspaces = 8;
+ 
+diff --git a/st.1 b/st.1
+index 187a734..6229305 100644
+--- a/st.1
++++ b/st.1
+@@ -1,8 +1,8 @@
+ .TH ST 1 st\-VERSION
+ .SH NAME
+-st \- simple terminal
++stterm \- Suckless Tools simple terminal
+ .SH SYNOPSIS
+-.B st
++.B stterm
+ .RB [ \-a ]
+ .RB [ \-c
+ .IR class ]
+@@ -26,7 +26,7 @@ st \- simple terminal
+ .IR command ...]
+ .RI [ commands ...]
+ .PP
+-.B st
++.B stterm
+ .RB [ \-a ]
+ .RB [ \-c
+ .IR class ]
+@@ -48,8 +48,8 @@ st \- simple terminal
+ .IR line
+ .RI [ stty_args ...]
+ .SH DESCRIPTION
+-.B st
+-is a simple terminal emulator.
++.B stterm
++is a Suckless Tools simple terminal emulator.
+ .SH OPTIONS
+ .TP
+ .B \-a
+@@ -61,7 +61,7 @@ defines the window class (default $TERM).
+ .BI \-f " font"
+ defines the
+ .I font
+-to use when st is run.
++to use when stterm is run.
+ .TP
+ .BI \-g " geometry"
+ defines the X11 geometry string.
+@@ -70,12 +70,12 @@ The form is [=][<cols>{xX}<rows>][{+-}<xoffset>{+-}<yoffset>]. See
+ for further details.
+ .TP
+ .B \-i
+-will fixate the position given with the -g option.
++will fixate the position given with the \-g option.
+ .TP
+ .BI \-o " iofile"
+ writes all the I/O to
+ .I iofile.
+-This feature is useful when recording st sessions. A value of "-" means
++This feature is useful when recording stterm sessions. A value of "-" means
+ standard output.
+ .TP
+ .BI \-t " title"
+@@ -85,7 +85,7 @@ defines the window title (default 'st').
+ defines the window title (default 'st').
+ .TP
+ .BI \-w " windowid"
+-embeds st within the window identified by 
++embeds stterm within the window identified by 
+ .I windowid
+ .TP
+ .BI \-l " line"
+@@ -98,12 +98,12 @@ should be a (pseudo-)serial device (e.g. /dev/ttySO on Linux for serial port
+ When this flag is given
+ remaining arguments are used as flags for
+ .BR stty(1).
+-By default st initializes the serial line to 8 bits, no parity, 1 stop bit
++By default stterm initializes the serial line to 8 bits, no parity, 1 stop bit
+ and a 38400 baud rate. The speed is set by appending it as last argument
+-(e.g. 'st -l 115200'). Arguments before the last one are
++(e.g. 'stterm -l 115200'). Arguments before the last one are
+ .BR stty(1)
+-flags. If you want to set odd parity on 115200 baud use for example 'st -l
+-parenb parodd 115200'. Set the number of bits by using for example 'st -l cs7
++flags. If you want to set odd parity on 115200 baud use for example 'stterm -l
++parenb parodd 115200'. Set the number of bits by using for example 'stterm -l cs7
+ 115200'. See
+ .BR stty(1)
+ for more arguments and cases.
+@@ -128,7 +128,7 @@ Break key is obtained in PC keyboards
+ pressing at the same time control and pause.
+ .TP
+ .B Ctrl-Print Screen
+-Toggle if st should print to the
++Toggle if stterm should print to the
+ .I iofile.
+ .TP
+ .B Shift-Print Screen
+diff --git a/st.c b/st.c
+index dc428ab..2547c65 100644
+--- a/st.c
++++ b/st.c
+@@ -3325,7 +3325,7 @@ xloadfonts(char *fontstr, double fontsize)
+ 	}
+ 
+ 	if (!pattern)
+-		die("st: can't open font %s\n", fontstr);
++		die("stterm: can't open font %s\n", fontstr);
+ 
+ 	if (fontsize > 1) {
+ 		FcPatternDel(pattern, FC_PIXEL_SIZE);
+@@ -3354,7 +3354,7 @@ xloadfonts(char *fontstr, double fontsize)
+ 	FcDefaultSubstitute(pattern);
+ 
+ 	if (xloadfont(&dc.font, pattern))
+-		die("st: can't open font %s\n", fontstr);
++		die("stterm: can't open font %s\n", fontstr);
+ 
+ 	if (usedfontsize < 0) {
+ 		FcPatternGetDouble(dc.font.match->pattern,
+@@ -3371,17 +3371,17 @@ xloadfonts(char *fontstr, double fontsize)
+ 	FcPatternDel(pattern, FC_SLANT);
+ 	FcPatternAddInteger(pattern, FC_SLANT, FC_SLANT_ITALIC);
+ 	if (xloadfont(&dc.ifont, pattern))
+-		die("st: can't open font %s\n", fontstr);
++		die("stterm: can't open font %s\n", fontstr);
+ 
+ 	FcPatternDel(pattern, FC_WEIGHT);
+ 	FcPatternAddInteger(pattern, FC_WEIGHT, FC_WEIGHT_BOLD);
+ 	if (xloadfont(&dc.ibfont, pattern))
+-		die("st: can't open font %s\n", fontstr);
++		die("stterm: can't open font %s\n", fontstr);
+ 
+ 	FcPatternDel(pattern, FC_SLANT);
+ 	FcPatternAddInteger(pattern, FC_SLANT, FC_SLANT_ROMAN);
+ 	if (xloadfont(&dc.bfont, pattern))
+-		die("st: can't open font %s\n", fontstr);
++		die("stterm: can't open font %s\n", fontstr);
+ 
+ 	FcPatternDestroy(pattern);
+ }
+@@ -3944,7 +3944,7 @@ xsettitle(char *p)
+ void
+ xresettitle(void)
+ {
+-	xsettitle(opt_title ? opt_title : "st");
++	xsettitle(opt_title ? opt_title : "stterm");
+ }
+ 
+ void
+@@ -4330,11 +4330,11 @@ void
+ usage(void)
+ {
+ 	die("%s " VERSION " (c) 2010-2015 st engineers\n"
+-	"usage: st [-a] [-v] [-c class] [-f font] [-g geometry] [-o file]\n"
+-	"          [-i] [-t title] [-T title] [-w windowid] [-e command ...]"
++	"usage: stterm [-a] [-v] [-c class] [-f font] [-g geometry] [-o file]\n"
++	"              [-i] [-t title] [-T title] [-w windowid] [-e command ...]"
+ 	" [command ...]\n"
+-	"       st [-a] [-v] [-c class] [-f font] [-g geometry] [-o file]\n"
+-	"          [-i] [-t title] [-T title] [-w windowid] -l line"
++	"       stterm [-a] [-v] [-c class] [-f font] [-g geometry] [-o file]\n"
++	"              [-i] [-t title] [-T title] [-w windowid] -l line"
+ 	" [stty_args ...]\n",
+ 	argv0);
+ }
+diff --git a/st.info b/st.info
+index b70fefa..550fb17 100644
+--- a/st.info
++++ b/st.info
+@@ -1,4 +1,4 @@
+-st| simpleterm,
++stterm| Suckless Tools simpleterm,
+ 	acsc=+C\,D-A.B0E``aaffgghFiGjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
+ 	am,
+ 	bce,
+@@ -188,24 +188,24 @@ st| simpleterm,
+ 	vpa=\E[%i%p1%dd,
+ 
+ 
+-st-256color| simpleterm with 256 colors,
+-	use=st,
++stterm-256color| Suckeless Tools simpleterm with 256 colors,
++	use=stterm,
+ 	colors#256,
+ 	pairs#32767,
+ #	Nicked from xterm-256color
+ 	setab=\E[%?%p1%{8}%<%t4%p1%d%e%p1%{16}%<%t10%p1%{8}%-%d%e48;5;%p1%d%;m,
+ 	setaf=\E[%?%p1%{8}%<%t3%p1%d%e%p1%{16}%<%t9%p1%{8}%-%d%e38;5;%p1%d%;m,
+ 
+-st-meta| simpleterm with meta key,
+-	use=st,
++stterm-meta| Suckless Tools simpleterm with meta key,
++	use=stterm,
+ 	km,
+ 	rmm=\E[?1034l,
+ 	smm=\E[?1034h,
+ 	rs2=\E[4l\E>\E[?1034h,
+ 	is2=\E[4l\E>\E[?1034h,
+ 
+-st-meta-256color| simpleterm with meta key and 256 colors,
+-	use=st-256color,
++stterm-meta-256color| Suckless Tools simpleterm with meta key and 256 colors,
++	use=stterm-256color,
+ 	km,
+ 	rmm=\E[?1034l,
+ 	smm=\E[?1034h,
+-- 
+2.5.0
+

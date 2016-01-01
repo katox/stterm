@@ -1,0 +1,25 @@
+From 58fee91db19109cefd7d724000316e77cc91a2cd Mon Sep 17 00:00:00 2001
+From: Kamil Toman <kamil.toman@leafclick.com>
+Date: Sat, 2 Jan 2016 00:00:24 +0100
+Subject: [PATCH 4/8] Increase terminal history from 2000 to 5000 lines
+
+---
+ config.def.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config.def.h b/config.def.h
+index 9733e4d..d3e0e94 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -7,7 +7,7 @@
+  */
+ static char font[] = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+ static int borderpx = 2;
+-#define histsize 2000
++#define histsize 5000
+ 
+ /*
+  * What program is execed by st depends of these precedence rules:
+-- 
+2.5.0
+

@@ -1,0 +1,4 @@
+debian/*.1
+st
+stterm
+config.h

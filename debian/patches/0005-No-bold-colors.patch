@@ -1,0 +1,25 @@
+From 3aba45688af6cf2af122bbe8bc376825f990b4a6 Mon Sep 17 00:00:00 2001
+From: Kamil Toman <kamil.toman@leafclick.com>
+Date: Fri, 1 Jan 2016 23:34:57 +0100
+Subject: [PATCH 5/8] No bold colors
+
+---
+ st.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/st.c b/st.c
+index 5616f60..bdc6992 100644
+--- a/st.c
++++ b/st.c
+@@ -3810,7 +3810,7 @@ xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len, int x, i
+ 
+ 	/* Change basic system colors [0-7] to bright system colors [8-15] */
+ 	if ((base.mode & ATTR_BOLD_FAINT) == ATTR_BOLD && BETWEEN(base.fg, 0, 7))
+-		fg = &dc.col[base.fg + 8];
++		fg = &dc.col[base.fg];
+ 
+ 	if (IS_SET(MODE_REVERSE)) {
+ 		if (fg == &dc.col[defaultfg]) {
+-- 
+2.5.0
+

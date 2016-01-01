@@ -1,0 +1,21 @@
+Solarized themed terminal
+-------------------------
+
+The solarized package is intended to be used with dircolors.256dark.
+To enable it run 
+	eval `dircolors  /usr/share/doc/stterm/examples/dircolors.256dark`
+
+See https://github.com/seebi/dircolors-solarized for discussion and
+dircolors configuration details.
+
+ -- Kamil Toman <kamil.toman@leafclick.com>  Thu, 31 Dec 2015 12:21:14 +0100
+
+Upstream source for Debian
+---------------------------
+
+The original package's binary "st" was renamed to "stterm" to follow
+the naming of similar terminal programs (xterm, aterm, dtterm ...).
+The upstream sources archive st.tar.gz were renamed and repacked with
+debian/repack.sh
+
+ -- Jari Aalto <jari.aalto@cante.net>, Fri, 11 Dec 2009 11:59:09 +0200

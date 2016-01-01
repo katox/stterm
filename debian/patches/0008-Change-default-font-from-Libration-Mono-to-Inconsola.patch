@@ -1,0 +1,25 @@
+From 15a4a45591d3d5d862eeb0f0bf2fe1b74b9b7f3d Mon Sep 17 00:00:00 2001
+From: Kamil Toman <kamil.toman@leafclick.com>
+Date: Sat, 2 Jan 2016 00:00:04 +0100
+Subject: [PATCH 8/8] Change default font from Libration Mono to Inconsolata
+
+---
+ config.def.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config.def.h b/config.def.h
+index f249861..c641a17 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -5,7 +5,7 @@
+  *
+  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
+  */
+-static char font[] = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
++static char font[] = "Inconsolata:pixelsize=16:antialias=true:autohint=true";
+ static int borderpx = 2;
+ #define histsize 5000
+ 
+-- 
+2.5.0
+

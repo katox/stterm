@@ -1,0 +1,24 @@
+Source: stterm
+Section: x11
+Priority: optional
+Maintainer: Jari Aalto <jari.aalto@cante.net>
+Build-Depends: debhelper (>= 9), libx11-dev, libfreetype6-dev,
+ libxext-dev, pkg-config, libxft-dev
+Standards-Version: 3.9.6
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/stterm.git
+Vcs-Git: git://anonscm.debian.org/collab-maint/stterm.git
+Homepage: http://st.suckless.org
+
+Package: stterm
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: x-terminal-emulator
+Description: suckless tools simple terminal for windowed system
+ Stterm is a bare bones terminal emulator developed with a focus on
+ simplicity and clarity as the primary goals. It is very lightweight
+ consuming only approximately (2+25 reserved+virtual) MiB memory. The
+ suckless software projects philosophy is about keeping things simple,
+ minimal and usable.
+ .
+ Note: the original binary name "st" in this package is "stterm" for
+ "suckless tools terminal".

@@ -1,0 +1,12 @@
+a4d72987d75039cb500e61e908676ca9  usr/bin/stterm
+9eebab120ee2fc11f16ebbb80b32c003  usr/share/doc/stterm/README
+1369059a0c8160624f7d918b09477c3d  usr/share/doc/stterm/changelog.Debian.gz
+5af8d761723f1023fccb3aff73df903e  usr/share/doc/stterm/changelog.gz
+0d0c81d28bd108bd5d9b4c745366b9bd  usr/share/doc/stterm/copyright
+b0a4c144a548f39505f8447a6d69ee0b  usr/share/doc/stterm/examples/dircolors.256dark.gz
+3453180757fc6ddbf9be5d3ec1301de5  usr/share/doc/stterm/examples/stterm.terminfo
+9a6a7415902b5326d947e84ac579a0f3  usr/share/man/man1/stterm.1.gz
+53cc987f3bc648b927c0c980c18d1957  usr/share/terminfo/s/stterm
+c1012157481d60ddabc5755b87dcc290  usr/share/terminfo/s/stterm-256color
+45b6151123ec57a21329391d7d77ecd2  usr/share/terminfo/s/stterm-meta
+95cfc2e394f4e7fecbbed42b396fee7a  usr/share/terminfo/s/stterm-meta-256color

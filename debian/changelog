@@ -1,0 +1,246 @@
+stterm (0.6-1.20151220+ff241199) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control
+    - (Standards-Version): Update to 3.9.6.
+    - (Provides): add x-terminal-emulator.
+  * Additional patches to vanilla "st"
+    - Mouse scrollback (button 4 / button 5)
+    - Shift-pageUp/pageDown scrollback
+    - Increase terminal history from 2000 to 5000 lines
+    - Solarized dark theme
+    - Change Alt-Shift-c/v to more used Ctrl-Shift-c/v
+    - Change default font from Libration Mono to Inconsolata
+
+ -- Kamil Toman <kamil.toman@leafclick.com>  Thu, 31 Dec 2015 12:21:14 +0100
+
+stterm (0.5+20140606+gitc2fd275-1) unstable; urgency=low
+
+  * New upstream release.
+    - Thanks to Markus <waldeck@gmx.de> for the heads up.
+    - Fix warning about missing fontset (Closes: #606149).
+    - Option "-g" now works correctly.
+  * debian/control
+    - (Standards-Version): Update to 3.9.5.
+  * debian/copyright
+    - Update years.
+
+ -- Jari Aalto <jari.aalto@cante.net>  Sun, 15 Jun 2014 18:55:14 +0300
+
+stterm (0.4.1+20130921+giteeae9b0-1) unstable; urgency=low
+
+  * New upstream release.
+  * pod2man.mk, debian-vars.mk, stterm.1.pod, stterm.manpages
+    - Delete; no longer needed (Closes: #724096).
+  * debian/patch
+    - Refresh patches.
+  * debian/rules
+    - (man): delete.
+    - (override_dh_auto_install): install manual page.
+
+ -- Jari Aalto <jari.aalto@cante.net>  Wed, 25 Sep 2013 08:27:18 +0300
+
+stterm (0.4.1+20130812+git4579693-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control
+    - (Provides): add x-terminal-emulator.
+  * debian/upstream.changelog
+    - Sync with release.
+  * debian/patches
+    - Sync with release (quilt refresh).
+    - (36, 40): New. Change command line option form -t to -T
+      according to policy: 11.8.3 Packages providing a terminal emulator.
+  * debian/{postinst,prerm}
+    - New. Install x-terminal-emulator alternatives.
+  * debian/repack.sh
+    - Minor updates.
+  * debian/rules
+    - (get-changelog): Clean EOL whitespaces.
+  * debian/*.mk
+    - Minor updates.
+
+ -- Jari Aalto <jari.aalto@cante.net>  Fri, 16 Aug 2013 09:04:29 +0300
+
+stterm (0.4.1+20130609+git5d3318c-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/copyright
+    - Sync emails and license text
+  * debian/upstream.changelog
+    - Sync with release.
+
+ -- Jari Aalto <jari.aalto@cante.net>  Thu, 13 Jun 2013 10:48:23 +0300
+
+stterm (0.4.1+20130526+gitb514410-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control
+    - (Description): Add reference to suckless tools and mention
+      original binary name "st".
+  * debian/patches
+    - Sync with release.
+    - (20): Update *.info file terminal descriptions.
+    - (35): Update manual page for name stterm.
+  * debian/upstream.changelog
+    - Sync with release.
+
+ -- Jari Aalto <jari.aalto@cante.net>  Fri, 31 May 2013 12:44:29 +0300
+
+stterm (0.4.1+20130511+git8f47c4a-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/copyright
+    - Update year.
+  * debian/rules
+    - (get-changelog): Update to new Git repository.
+  * debian/upstream.changelog
+    - Sync with release (Closes: #709318).
+
+ -- Jari Aalto <jari.aalto@cante.net>  Thu, 23 May 2013 10:51:36 +0300
+
+stterm (0.4.1+20130501+git8618386-1) unstable; urgency=low
+
+  * New upstream release (Closes: #706549).
+  * debian/copyright
+    - (X-Vcs-Git): Update from Hg to Git repository.
+  * debian/patches
+    - (12, 13, 20, 30): Refresh for current release.
+  * debian/rules
+    - Update build flags for current release. E.g VERSION 0.4.1.
+
+ -- Jari Aalto <jari.aalto@cante.net>  Wed, 01 May 2013 22:14:31 +0300
+
+stterm (0.3+20121116+hg424-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control
+    - (Build-Depends): Add libfreetype6-dev, libxext-dev, pkg-config,
+      libxft-dev.
+    - (Standards-Version): Update to 3.9.4.
+  * debian/patches
+    - (12, 13, 20): Refresh for current release.
+    - (30): New. Use name stterm-256. Patch thanks to John Vogel
+      <jvogel4@stny.rr.com> (Closes: #693494).
+  * debian/rules
+    - (CFLAGS, LDFLAGS): Update for latest release.
+
+ -- Jari Aalto <jari.aalto@cante.net>  Sat, 24 Nov 2012 12:48:42 +0200
+
+stterm (0.0~20120227+hg244-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/patches
+    - (13): New. Update name st to stterm in window title.
+
+ -- Jari Aalto <jari.aalto@cante.net>  Sat, 21 Jul 2012 10:57:50 +0300
+
+stterm (0.0~20120124+hg226-2) unstable; urgency=low
+
+  * debian/compat
+    - Update to 9.
+  * debian/control
+    - (Build-Depends): Update to debhelper 9.
+    - (Standards-Version): Update to 3.9.3.1.
+  * debian/copyright
+    - Update to format 1.0.
+  * debian/rules
+    - Use hardened build flags
+      http://wiki.debian.org/ReleaseGoals/SecurityHardeningBuildFlags
+    - (override_dh_auto_build): New.
+
+ -- Jari Aalto <jari.aalto@cante.net>  Fri, 23 Mar 2012 15:45:22 -0400
+
+stterm (0.0~20120124+hg226-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/rules
+    - Set LDFLAGS via dpkg-buildflags(1).
+    - Use hardened CFLAGS (release goal).
+      http://wiki.debian.org/ReleaseGoals/SecurityHardeningBuildFlags
+
+ -- Jari Aalto <jari.aalto@cante.net>  Sun, 05 Feb 2012 10:11:26 +0200
+
+stterm (0.0~20110920+hg212-4) unstable; urgency=low
+
+  * debian/rules
+    - (terminfo): New. Run tic(1) at install time (Closes: #656557).
+  * debian/{postinst,postrm}: Delete. Tic is now called in debian/rules.
+
+ -- Jari Aalto <jari.aalto@cante.net>  Mon, 23 Jan 2012 21:09:31 +0200
+
+stterm (0.0~20110920+hg212-3) unstable; urgency=low
+
+  * debian/postinst
+    - Delete files created in postinst by tic(1) (Closes: #656557).
+
+ -- Jari Aalto <jari.aalto@cante.net>  Fri, 20 Jan 2012 15:36:11 +0200
+
+stterm (0.0~20110920+hg212-2) unstable; urgency=low
+
+  * debian/patches
+    - (20): Correct terminal id from "st" to "stterm" (Closes: #656114).
+
+ -- Jari Aalto <jari.aalto@cante.net>  Tue, 17 Jan 2012 20:27:48 +0200
+
+stterm (0.0~20110920+hg212-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/clean
+    - Add config.h.
+  * debian/compat
+    - Update to 8.
+  * debian/control
+    - (Build-Depends): debhelper 8.
+    - (Description): update firs line.
+    - (Standards-Version): Update to 3.9.2.
+  * debian/copyright
+    - Update to DEP 5.
+  * debian/patches
+    - (10): Delete. Accepted upstream: options -V, --version.
+    - (12): New. Replaced by patches 11-fix-compile and 12-version.
+    - (13): Delete. Accepted upstream: do not display Ctrl, Alt key
+      messages.
+    - (20): Refresh.
+  * debian/rules
+    - (get-changelog): update instructions.
+
+ -- Jari Aalto <jari.aalto@cante.net>  Tue, 20 Sep 2011 12:56:21 +0300
+
+stterm (0.0~20091219+hg68-4) unstable; urgency=low
+
+  * debian/control
+    - (Description): Correct units to MiB (Closes: #584649).
+
+ -- Jari Aalto <jari.aalto@cante.net>  Sat, 05 Jun 2010 13:27:55 +0300
+
+stterm (0.0~20091219+hg68-3) unstable; urgency=low
+
+  * debian/upstream.changelog
+    - Update content (Closes: #583920).
+
+ -- Jari Aalto <jari.aalto@cante.net>  Wed, 02 Jun 2010 08:34:54 +0300
+
+stterm (0.0~20091219+hg68-2) unstable; urgency=low
+
+  * Bug fix release
+    - Prevent tic(1) from writing to $HOME and handle terminfo
+      file install in postinst script (FTBFS; Closes: #583627).
+  * debian/patches
+    - (20): New. Change terminal name from st to stterm.
+  * debian/postinst
+    - New file.
+  * debian/rules
+    - Move to full dh(1).
+  * debian/stterm.install
+    - Delete. Handled in debian/rules.
+  * debian/upstream.changelog
+    - New file.
+
+ -- Jari Aalto <jari.aalto@cante.net>  Sat, 29 May 2010 09:14:51 +0300
+
+stterm (0.0~20091219+hg68-1) unstable; urgency=low
+
+  * Initial release (Closes: #560596).
+
+ -- Jari Aalto <jari.aalto@cante.net>  Sun, 14 Feb 2010 01:02:03 +0200

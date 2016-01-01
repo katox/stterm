@@ -1,0 +1,19 @@
+Package: stterm
+Version: 0.6-1.20151220+ff241199
+Architecture: amd64
+Maintainer: Jari Aalto <jari.aalto@cante.net>
+Installed-Size: 125
+Depends: libc6 (>= 2.17), libfontconfig1 (>= 2.9.0), libx11-6, libxft2 (>> 2.1.1)
+Provides: x-terminal-emulator
+Section: x11
+Priority: optional
+Homepage: http://st.suckless.org
+Description: suckless tools simple terminal for windowed system
+ Stterm is a bare bones terminal emulator developed with a focus on
+ simplicity and clarity as the primary goals. It is very lightweight
+ consuming only approximately (2+25 reserved+virtual) MiB memory. The
+ suckless software projects philosophy is about keeping things simple,
+ minimal and usable.
+ .
+ Note: the original binary name "st" in this package is "stterm" for
+ "suckless tools terminal".
