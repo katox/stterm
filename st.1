@@ -1,8 +1,8 @@
 .TH ST 1 st\-VERSION
 .SH NAME
-st \- simple terminal
+stterm \- Suckless Tools simple terminal
 .SH SYNOPSIS
-.B st
+.B stterm
 .RB [ \-a ]
 .RB [ \-c
 .IR class ]
@@ -26,7 +26,7 @@ st \- simple terminal
 .IR command ...]
 .RI [ commands ...]
 .PP
-.B st
+.B stterm
 .RB [ \-a ]
 .RB [ \-c
 .IR class ]
@@ -48,8 +48,8 @@ st \- simple terminal
 .IR line
 .RI [ stty_args ...]
 .SH DESCRIPTION
-.B st
-is a simple terminal emulator.
+.B stterm
+is a Suckless Tools simple terminal emulator.
 .SH OPTIONS
 .TP
 .B \-a
@@ -61,7 +61,7 @@ defines the window class (default $TERM).
 .BI \-f " font"
 defines the
 .I font
-to use when st is run.
+to use when stterm is run.
 .TP
 .BI \-g " geometry"
 defines the X11 geometry string.
@@ -70,12 +70,12 @@ The form is [=][<cols>{xX}<rows>][{+-}<xoffset>{+-}<yoffset>]. See
 for further details.
 .TP
 .B \-i
-will fixate the position given with the -g option.
+will fixate the position given with the \-g option.
 .TP
 .BI \-o " iofile"
 writes all the I/O to
 .I iofile.
-This feature is useful when recording st sessions. A value of "-" means
+This feature is useful when recording stterm sessions. A value of "-" means
 standard output.
 .TP
 .BI \-t " title"
@@ -85,7 +85,7 @@ defines the window title (default 'st').
 defines the window title (default 'st').
 .TP
 .BI \-w " windowid"
-embeds st within the window identified by 
+embeds stterm within the window identified by 
 .I windowid
 .TP
 .BI \-l " line"
@@ -98,12 +98,12 @@ should be a (pseudo-)serial device (e.g. /dev/ttySO on Linux for serial port
 When this flag is given
 remaining arguments are used as flags for
 .BR stty(1).
-By default st initializes the serial line to 8 bits, no parity, 1 stop bit
+By default stterm initializes the serial line to 8 bits, no parity, 1 stop bit
 and a 38400 baud rate. The speed is set by appending it as last argument
-(e.g. 'st -l 115200'). Arguments before the last one are
+(e.g. 'stterm -l 115200'). Arguments before the last one are
 .BR stty(1)
-flags. If you want to set odd parity on 115200 baud use for example 'st -l
-parenb parodd 115200'. Set the number of bits by using for example 'st -l cs7
+flags. If you want to set odd parity on 115200 baud use for example 'stterm -l
+parenb parodd 115200'. Set the number of bits by using for example 'stterm -l cs7
 115200'. See
 .BR stty(1)
 for more arguments and cases.
@@ -128,7 +128,7 @@ Break key is obtained in PC keyboards
 pressing at the same time control and pause.
 .TP
 .B Ctrl-Print Screen
-Toggle if st should print to the
+Toggle if stterm should print to the
 .I iofile.
 .TP
 .B Shift-Print Screen

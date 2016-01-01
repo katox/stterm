@@ -3325,7 +3325,7 @@ xloadfonts(char *fontstr, double fontsize)
 	}
 
 	if (!pattern)
-		die("st: can't open font %s\n", fontstr);
+		die("stterm: can't open font %s\n", fontstr);
 
 	if (fontsize > 1) {
 		FcPatternDel(pattern, FC_PIXEL_SIZE);
@@ -3354,7 +3354,7 @@ xloadfonts(char *fontstr, double fontsize)
 	FcDefaultSubstitute(pattern);
 
 	if (xloadfont(&dc.font, pattern))
-		die("st: can't open font %s\n", fontstr);
+		die("stterm: can't open font %s\n", fontstr);
 
 	if (usedfontsize < 0) {
 		FcPatternGetDouble(dc.font.match->pattern,
@@ -3371,17 +3371,17 @@ xloadfonts(char *fontstr, double fontsize)
 	FcPatternDel(pattern, FC_SLANT);
 	FcPatternAddInteger(pattern, FC_SLANT, FC_SLANT_ITALIC);
 	if (xloadfont(&dc.ifont, pattern))
-		die("st: can't open font %s\n", fontstr);
+		die("stterm: can't open font %s\n", fontstr);
 
 	FcPatternDel(pattern, FC_WEIGHT);
 	FcPatternAddInteger(pattern, FC_WEIGHT, FC_WEIGHT_BOLD);
 	if (xloadfont(&dc.ibfont, pattern))
-		die("st: can't open font %s\n", fontstr);
+		die("stterm: can't open font %s\n", fontstr);
 
 	FcPatternDel(pattern, FC_SLANT);
 	FcPatternAddInteger(pattern, FC_SLANT, FC_SLANT_ROMAN);
 	if (xloadfont(&dc.bfont, pattern))
-		die("st: can't open font %s\n", fontstr);
+		die("stterm: can't open font %s\n", fontstr);
 
 	FcPatternDestroy(pattern);
 }
@@ -3944,7 +3944,7 @@ xsettitle(char *p)
 void
 xresettitle(void)
 {
-	xsettitle(opt_title ? opt_title : "st");
+	xsettitle(opt_title ? opt_title : "stterm");
 }
 
 void
@@ -4330,11 +4330,11 @@ void
 usage(void)
 {
 	die("%s " VERSION " (c) 2010-2015 st engineers\n"
-	"usage: st [-a] [-v] [-c class] [-f font] [-g geometry] [-o file]\n"
-	"          [-i] [-t title] [-T title] [-w windowid] [-e command ...]"
+	"usage: stterm [-a] [-v] [-c class] [-f font] [-g geometry] [-o file]\n"
+	"              [-i] [-t title] [-T title] [-w windowid] [-e command ...]"
 	" [command ...]\n"
-	"       st [-a] [-v] [-c class] [-f font] [-g geometry] [-o file]\n"
-	"          [-i] [-t title] [-T title] [-w windowid] -l line"
+	"       stterm [-a] [-v] [-c class] [-f font] [-g geometry] [-o file]\n"
+	"              [-i] [-t title] [-T title] [-w windowid] -l line"
 	" [stty_args ...]\n",
 	argv0);
 }
